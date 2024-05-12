@@ -1,0 +1,383 @@
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    age INT NOT NULL,
+    phoneno VARCHAR(12) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    height_ft INT NOT NULL,
+    height_inches FLOAT NOT NULL,
+    weight FLOAT NOT NULL,
+    signup_date DATE DEFAULT CURDATE()
+);
+
+CREATE TABLE weightlossgoals (
+    goal_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    current_weight DECIMAL(5,2) NOT NULL,
+    target_weight DECIMAL(5,2) NOT NULL,
+    estcalories DECIMAL(10,2) GENERATED ALWAYS AS (ABS(target_weight - current_weight) * 7000) STORED,
+    target_date DATE NOT NULL,
+    daily_cal_intake DECIMAL(10, 2),
+    daily_cal_outtake DECIMAL(10, 2),
+    days_remain INT,
+    CONSTRAINT fk_user_id_wlg FOREIGN KEY (user_id) REFERENCES Users(user_id)
+) ENGINE=InnoDB;
+
+CREATE TABLE calorieintake (
+    intake_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    intake_date DATE DEFAULT CURDATE(),
+    food_name VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    calories_per_quantity FLOAT NOT NULL,
+    total_calories_consumed FLOAT GENERATED ALWAYS AS (quantity * calories_per_quantity) STORED,
+    CONSTRAINT fk_user_id_ci FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE exercise (
+    exercise_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    exercise_date DATE DEFAULT CURDATE(),
+    exercise_name VARCHAR(100) NOT NULL,
+    intensity_level VARCHAR(50) NOT NULL,
+    duration_minutes INT NOT NULL,
+    met DECIMAL(5,2) NOT NULL,
+    calories_burned DECIMAL(10,2),
+    CONSTRAINT fk_user_id_ex FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE communities (
+    community_id INT AUTO_INCREMENT PRIMARY KEY,
+    community_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    community_id INT NOT NULL,
+    message_text TEXT NOT NULL,
+    message_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user_id_m FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    CONSTRAINT fk_community_id FOREIGN KEY (community_id) REFERENCES Communities(community_id)
+);
+
+CREATE TABLE recommendations (
+    recommendation_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    recommendation_text TEXT NOT NULL,
+    recommendation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user_id_r FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE exerciseinfo (
+    exercise_name VARCHAR(100) PRIMARY KEY,
+    met DECIMAL(5,2) NOT NULL,
+    intensity_level VARCHAR(50) NOT NULL,
+    corresponding_duration_minutes INT NOT NULL
+);
+
+CREATE TABLE foodinfo (
+    food_name VARCHAR(100) PRIMARY KEY,
+    calories_per_quantity FLOAT NOT NULL,
+    quantity INT NOT NULL
+);
+
+CREATE TABLE dietplan (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    food_name VARCHAR(100) NOT NULL,
+    quantity_grams INT NOT NULL,
+    time_of_day VARCHAR(20) NOT NULL,
+    expected_target_calories DECIMAL(10,2) NOT NULL,
+    flag INT NOT NULL DEFAULT 0,
+    CONSTRAINT fk_user_id_dp FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE workoutplan (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    exercise_name VARCHAR(100) NOT NULL,
+    intensity_level VARCHAR(50) NOT NULL,
+    duration_minutes INT NOT NULL,
+    met DECIMAL(5,2) NOT NULL,
+    time_of_day VARCHAR(20) NOT NULL,
+    expected_target_calories INT NOT NULL,
+    CONSTRAINT fk_user_id_wp FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE CalorieExpenditure (
+    expenditure_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    expenditure_date DATE NOT NULL,
+    calories_burned INT NOT NULL,
+    CONSTRAINT fk_user_id_ce FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+
+
+-- Create stored function to calculate expected target calories
+DELIMITER //
+
+CREATE FUNCTION calculate_expected_target_calories(
+    met DECIMAL(5,2),
+    user_weight FLOAT,
+    duration_minutes INT
+)
+RETURNS DECIMAL(10,2)
+BEGIN
+    DECLARE expected_target_calories DECIMAL(10,2);
+    SET expected_target_calories = met * 3.5 * (user_weight / 200) * duration_minutes;
+    RETURN expected_target_calories;
+END//
+
+DELIMITER ;
+
+-- Create trigger to update expected_target_calories in WorkoutPlan table
+DELIMITER //
+CREATE TRIGGER calculate_expected_target_calories_trigger
+BEFORE INSERT ON workoutplan
+FOR EACH ROW
+BEGIN
+    DECLARE user_weight FLOAT;
+    
+    SELECT weight INTO user_weight FROM users WHERE user_id = NEW.user_id;
+    
+    SET NEW.expected_target_calories = calculate_expected_target_calories(NEW.met, user_weight, NEW.duration_minutes);
+END;
+//
+
+DELIMITER ;
+
+-- Create stored function to calculate calories burned
+DELIMITER //
+
+CREATE FUNCTION calculate_calories_burned(
+    met DECIMAL(5,2),
+    user_weight FLOAT,
+    duration_minutes INT
+)
+RETURNS DECIMAL(10,2)
+BEGIN
+    DECLARE calories_burned DECIMAL(10,2);
+    SET calories_burned = met * 3.5 * (user_weight / 200) * duration_minutes;
+    RETURN calories_burned;
+END//
+
+DELIMITER ;
+
+-- Create trigger to update calories_burned in Exercise table
+DELIMITER //
+CREATE TRIGGER calculate_calories_burned_trigger
+BEFORE INSERT ON exercise
+FOR EACH ROW
+BEGIN
+    DECLARE user_weight FLOAT;
+    
+    SELECT weight INTO user_weight FROM users WHERE user_id = NEW.user_id;
+    
+    SET NEW.calories_burned = calculate_calories_burned(NEW.met, user_weight, NEW.duration_minutes);
+END;
+//
+
+DELIMITER ;
+
+-- Create trigger to calculate and round expected target calories after insertion into WorkoutPlan table
+DELIMITER //
+CREATE TRIGGER calculate_and_round_expected_target_calories_trigger
+BEFORE INSERT ON workoutplan
+FOR EACH ROW
+BEGIN
+    DECLARE user_weight FLOAT;
+
+    -- Retrieve user weight for the inserted user_id
+    SELECT weight INTO user_weight FROM Users WHERE user_id = NEW.user_id;
+
+    -- Calculate expected target calories for the inserted row
+    SET NEW.expected_target_calories = ROUND(calculate_expected_target_calories(NEW.met, user_weight, NEW.duration_minutes) / 50) * 50;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER update_wlg_calories_and_days_remaining_ins
+BEFORE INSERT ON weightlossgoals
+FOR EACH ROW
+BEGIN
+    SET NEW.daily_cal_intake = NEW.estcalories / DATEDIFF(NEW.target_date, CURDATE());
+    SET NEW.daily_cal_outtake = ABS(NEW.current_weight - NEW.target_weight) * 7000 / DATEDIFF(NEW.target_date, CURDATE());
+    SET NEW.days_remain = DATEDIFF(NEW.target_date, CURDATE());
+END;
+//
+
+CREATE TRIGGER update_wlg_calories_and_days_remaining_upd
+BEFORE UPDATE ON weightlossgoals
+FOR EACH ROW
+BEGIN
+    SET NEW.daily_cal_intake = NEW.estcalories / DATEDIFF(NEW.target_date, CURDATE());
+    SET NEW.daily_cal_outtake = ABS(NEW.current_weight - NEW.target_weight) * 7000 / DATEDIFF(NEW.target_date, CURDATE());
+    SET NEW.days_remain = DATEDIFF(NEW.target_date, CURDATE());
+END;
+//
+
+DELIMITER ;
+
+
+INSERT INTO users (age, phoneno, username, email, password, height_ft, height_inches, weight, signup_date)
+VALUES
+    (30, '1234567890', 'ali', 'ali@example.com', '123', 5, 6, 77.3, '2024-01-15'), -- Example data for user "ali"
+    (25, '9876543210', 'ahmad', 'ahmad@example.com', '123', 5, 8, 57.6, '2024-03-20'),
+    (35, '1231231234', 'umar', 'umar@example.com', '123', 6, 3, 65.8, '2024-04-10'),
+    (28, '5556667777', 'hassan', 'hassan@example.com', '123', 6, 0, 70.2, '2024-05-05'),
+    (40, '1112223333', 'asad', 'asad@example.com', '123', 6, 0, 85.0, '2024-02-10'),
+    (32, '9998887777', 'malik', 'malik@example.com', '123', 5, 4, 63.5, '2024-03-25'),
+    (27, '3334445555', 'farhan', 'farhan@example.com', '123', 5, 10, 75.0, '2024-05-20');
+    
+-- Populate FoodInfo table
+INSERT INTO foodinfo (food_name, calories_per_quantity, quantity)
+VALUES
+    ('Apple', 52, 1),
+    ('Banana', 105, 1),
+    ('Chicken Breast', 165, 100),
+    ('Orange', 62, 1),
+    ('Salmon', 208, 100),
+    ('Egg', 70, 1),
+    ('Spinach', 7, 100),
+    ('Brown Rice', 112, 100),
+    ('Almonds', 7, 1),
+    ('Greek Yogurt', 59, 100);
+
+-- Populate Exercise table
+INSERT INTO exercise (user_id, exercise_date, exercise_name, intensity_level, duration_minutes, met)
+VALUES
+    (1, '2024-05-01', 'Walking', 'Low', 30, 2.5),
+    (1, '2024-05-01', 'Running', 'High', 45, 12.0),
+    (2, '2024-05-01', 'Swimming', 'Moderate', 60, 7.0),
+    (3, '2024-05-01', 'Running', 'High', 30, 12.0),
+    (4, '2024-05-01', 'Walking', 'Low', 45, 3.0),
+    (1, '2024-05-02', 'Swimming', 'Moderate', 45, 7.0),
+    (2, '2024-05-02', 'Yoga', 'Low', 60, 2.0),
+    (3, '2024-05-02', 'Cycling', 'Moderate', 60, 6.0);
+    
+
+-- Populate DietPlan table
+INSERT INTO dietplan (user_id, food_name, quantity_grams, time_of_day, expected_target_calories, flag)
+VALUES
+    (1, 'Oatmeal', 200, 'Breakfast', 300, 0),
+    (1, 'Grilled Chicken Salad', 300, 'Lunch', 400, 0),
+    (1, 'Salmon with Quinoa', 250, 'Dinner', 350, 0),
+    (2, 'Avocado Toast', 150, 'Breakfast', 250, 0),
+    (2, 'Vegetable Soup', 300, 'Lunch', 350, 0),
+    (2, 'Baked Fish with Vegetables', 300, 'Dinner', 400, 0),
+    (3, 'Greek Yogurt with Berries', 200, 'Breakfast', 200, 0),
+    (3, 'Turkey Sandwich', 300, 'Lunch', 350, 0),
+    (3, 'Stir-Fried Tofu with Veggies', 250, 'Dinner', 300, 0),
+    (4, 'Whole Wheat Toast with Peanut Butter', 150, 'Breakfast', 200, 0),
+    (4, 'Chicken Caesar Salad', 300, 'Lunch', 400, 0),
+    (4, 'Grilled Steak with Sweet Potatoes', 250, 'Dinner', 350, 0),
+    (3, 'Omelette with Spinach', 200, 'Breakfast', 350, 0),
+    (4, 'Grilled Chicken with Brown Rice', 300, 'Lunch', 400, 0),
+    (1, 'Greek Yogurt with Almonds', 200, 'Dinner', 250, 0),
+    (2, 'Mixed Vegetable Salad', 150, 'Breakfast', 200, 0),
+    (3, 'Boiled Eggs with Whole Wheat Toast', 250, 'Lunch', 300, 0),
+    (4, 'Quinoa Salad with Grilled Vegetables', 300, 'Dinner', 350, 0),
+    (1, 'Avocado Toast with Poached Egg', 200, 'Breakfast', 300, 0),
+    (2, 'Chickpea Curry with Brown Rice', 300, 'Lunch', 400, 0);
+
+-- Populate WorkoutPlan table
+INSERT INTO workoutplan (user_id, exercise_name, intensity_level, duration_minutes, met, time_of_day)
+VALUES
+    (1, 'Running', 'High', 30, 12.0, 'Morning'),
+    (1, 'Strength Training', 'Moderate', 45, 6.0, 'Evening'),
+    (2, 'Cycling', 'Moderate', 45, 8.0, 'Morning'),
+    (2, 'Yoga', 'Low', 60, 3.0, 'Evening'),
+    (3, 'Swimming', 'High', 60, 7.0, 'Morning'),
+    (3, 'Pilates', 'Low', 45, 3.5, 'Evening'),
+    (4, 'Walking', 'Low', 45, 3.0, 'Morning'),
+    (4, 'Elliptical', 'Moderate', 30, 5.0, 'Evening'),
+    (3, 'Weightlifting', 'High', 45, 5.0, 'Morning'),
+    (4, 'Circuit Training', 'High', 60, 6.5, 'Evening'),
+    (1, 'Hiking', 'Moderate', 90, 4.0, 'Morning'),
+    (2, 'Pilates', 'Low', 60, 3.0, 'Evening');
+    
+-- Populate WeightLossGoals table
+INSERT INTO weightlossgoals (user_id, current_weight, target_weight, target_date)
+VALUES
+    (1, 80.5, 75.0, '2024-06-30'),
+    (2, 65.0, 60.0, '2024-07-15'),
+    (3, 85.0, 80.0, '2024-07-01'),
+    (4, 63.5, 58.0, '2024-08-15'),
+    (1, 77.3, 72.0, '2024-06-15'),
+    (2, 57.6, 53.0, '2024-07-30');
+    
+
+-- Populate CalorieIntake table
+INSERT INTO calorieintake (user_id, intake_date, food_name, quantity, calories_per_quantity) VALUES
+(1, '2024-05-01', 'Apple', 1, 52),
+(1, '2024-05-01', 'Banana', 1, 105),
+(2, '2024-05-01', 'Orange', 1, 62),
+(3, '2024-05-01', 'Chicken Breast', 1, 165),
+    (4, '2024-05-01', 'Orange', 1, 62),
+    (1, '2024-05-02', 'Salmon', 1, 208),
+    (2, '2024-05-02', 'Banana', 1, 105),
+    (3, '2024-05-02', 'Apple', 1, 52);
+  
+-- Populate Communities table
+INSERT INTO communities (community_name)
+VALUES
+    ('Fitness Enthusiasts'),
+    ('Healthy Eating');
+
+-- Populate Messages table
+INSERT INTO messages (user_id, community_id, message_text)
+VALUES
+    (1, 1, 'Hello everyone! Let''s achieve our fitness goals together.'),
+    (2, 2, 'I found a great recipe for a healthy salad. Check it out!'),
+    (3, 1, 'Hey everyone, I just joined the group!'),
+    (4, 2, 'Looking for healthy dinner recipes, any suggestions?'),
+    (1, 1, 'Completed my morning run, feeling great!'),
+    (2, 2, 'Just finished a relaxing yoga session.');
+
+-- Populate Recommendations table
+INSERT INTO recommendations (user_id, recommendation_text)
+VALUES
+    (1, 'Try incorporating more cardio exercises into your routine.'),
+    (2, 'Consider adding strength training to your workouts.'),
+    (3, 'Try adding some interval training to your workouts.'),
+    (4, 'Consider trying out a vegetarian diet for a week.'),
+    (1, 'Make sure to stay hydrated throughout the day.'),
+    (2, 'Include more green leafy vegetables in your meals.');
+
+INSERT INTO ExerciseInfo (exercise_name, met, intensity_level, corresponding_duration_minutes)
+VALUES
+    ('Walking', 3.5, 'Low', 30),
+    ('Running', 8.0, 'High', 30),
+    ('Swimming', 7.0, 'High', 30),
+    ('Cycling', 6.0, 'Moderate', 30),
+    ('Yoga', 2.5, 'Low', 60),
+    ('Weightlifting', 3.0, 'Moderate', 45),
+    ('Pilates', 3.0, 'Low', 45),
+    ('Hiking', 6.0, 'Moderate', 60),
+    ('Rowing', 6.0, 'Moderate', 30),
+    ('Jumping Rope', 12.0, 'High', 15);
+
+INSERT INTO CalorieExpenditure (user_id, expenditure_date, calories_burned)
+VALUES
+    (1, '2024-05-01', 500),
+    (1, '2024-05-02', 600),
+    (2, '2024-05-01', 400),
+    (2, '2024-05-02', 450);
+
+-- Displaying data from all tables
+SELECT * FROM users;
+SELECT * FROM weightlossgoals;
+SELECT * FROM calorieintake;
+SELECT * FROM exercise;
+SELECT * FROM communities;
+SELECT * FROM messages;
+SELECT * FROM recommendations;
+SELECT * FROM exerciseinfo;
+SELECT * FROM foodinfo;
+SELECT * FROM dietplan;
+SELECT * FROM workoutplan;
