@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" pref="808" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" pref="500" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[400, 500]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[700, 400]"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="111" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                              <Component id="jLabel4" max="32767" attributes="0"/>
+                              <Component id="jLabel2" pref="83" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="220" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="follow" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" pref="53" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="follow" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Recommendations"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Daily Calories:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="String.valueOf(calories)" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="int userID = getuserID();&#xa;float weight = 0.0f;&#xa;float ft = 0.0f;&#xa;float in = 0.0f;&#xa;int age = 0;&#xa;double calories = 0.0;&#xa;float trgtWeight = 0.0f;&#xa;try{&#xa;    Class.forName(&quot;com.mysql.jdbc.Driver&quot;);&#xa;    Connection con = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/fit&quot;,&quot;root&quot;,&quot;&quot;);&#xa;    String sql = &quot;Select weight, age, height_ft, height_inches from users where user_id = ?&quot;;&#xa;    PreparedStatement pst = con.prepareStatement(sql);&#xa;    pst.setInt(1, userID);&#xa;    ResultSet rs = pst.executeQuery();&#xa;    if(rs.next())&#xa;    {&#xa;        weight = rs.getFloat(&quot;weight&quot;);&#xa;        ft = rs.getFloat(&quot;height_ft&quot;);&#xa;        in = rs.getFloat(&quot;height_inches&quot;);&#xa;        age = rs.getInt(&quot;age&quot;);&#xa;&#xa;        double height = 2.54*((ft*12)+in);&#xa;&#xa;        double BMR = (10*weight)+(6.25*height)-(5*age)+5;&#xa;        double TDEE = (BMR*1.1)*1.55;&#xa;        sql = &quot;Select target_weight from weightlossgoals where user_id = ?&quot;;&#xa;        pst = con.prepareStatement(sql);&#xa;        pst.setInt(1, userID);&#xa;        rs = pst.executeQuery();&#xa;        if(rs.next()){&#xa;            trgtWeight = rs.getFloat(&quot;target_weight&quot;);&#xa;        }&#xa;        if (trgtWeight&lt;weight){&#xa;            calories = TDEE - 500;&#xa;        }&#xa;        else if(trgtWeight&gt;weight){&#xa;            calories = TDEE +500;&#xa;        }&#xa;        else{&#xa;            calories = TDEE;&#xa;        }&#xa;    }&#xa;    else{&#xa;        weight = 3.3f;&#xa;    }&#xa;} catch (Exception e) {&#xa;    e.printStackTrace();&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exercises:"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="exercisesText.toString()" type="code"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="StringBuilder exercisesText = new StringBuilder();&#xa;float criteria = 6.0f;&#xa;try{&#xa;    Class.forName(&quot;com.mysql.jdbc.Driver&quot;);&#xa;    Connection con = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/fit&quot;,&quot;root&quot;,&quot;&quot;);&#xa;if(trgtWeight&gt;weight){&#xa;    String sql = &quot;Select * from exerciseinfo where met &lt; ?&quot;;&#xa;    PreparedStatement pst = con.prepareStatement(sql);&#xa;    pst.setFloat(1, criteria);&#xa;    ResultSet rs = pst.executeQuery();&#xa;&#xa;    String insertUserQuery = &quot;INSERT INTO workoutplan (user_id, exercise_name, intensity_level, duration_minutes, met, time_of_day) VALUES (?, ?, ?, ?, ?, ?)&quot;;&#xa;    PreparedStatement insertUserStatement = con.prepareStatement(insertUserQuery);&#xa;&#xa;    while(rs.next())&#xa;    {&#xa;        exercisesText.append(rs.getString(&quot;exercise_name&quot;)).append(&quot;\n&quot;);&#xa;&#xa;        String ename = rs.getString(&quot;exercise_name&quot;);&#xa;        String ilvl = rs.getString(&quot;intensity_level&quot;);&#xa;        int time = rs.getInt(&quot;corresponding_duration_minutes&quot;);&#xa;        float met = rs.getFloat(&quot;met&quot;);&#xa;        &#xa;        insertUserStatement.setInt(1, userID);&#xa;        insertUserStatement.setString(2, ename);&#xa;        insertUserStatement.setString(3, ilvl);&#xa;        insertUserStatement.setInt(4, time); // Assuming email is not provided and setting a default value&#xa;        insertUserStatement.setFloat(5, met);&#xa;        insertUserStatement.setString(6, &quot;Evening&quot;);&#xa;         &#xa;&#xa;        int rowsAffected = insertUserStatement.executeUpdate();&#xa;    }&#xa;&#xa;    &#xa;}else{&#xa;String sql = &quot;Select * from exerciseinfo where met &gt;= ?&quot;;&#xa;    PreparedStatement pst = con.prepareStatement(sql);&#xa;    pst.setFloat(1, criteria);&#xa;    ResultSet rs = pst.executeQuery();&#xa;    &#xa;    String insertUserQuery = &quot;INSERT INTO workoutplan (user_id, exercise_name, intensity_level, duration_minutes, met, time_of_day) VALUES (?, ?, ?, ?, ?, ?)&quot;;&#xa;    PreparedStatement insertUserStatement = con.prepareStatement(insertUserQuery);&#xa;&#xa;    while(rs.next())&#xa;    {&#xa;        exercisesText.append(rs.getString(&quot;exercise_name&quot;)).append(&quot;\n&quot;);&#xa;&#xa;        String ename = rs.getString(&quot;exercise_name&quot;);&#xa;        String ilvl = rs.getString(&quot;intensity_level&quot;);&#xa;        int time = rs.getInt(&quot;corresponding_duration_minutes&quot;);&#xa;        float met = rs.getFloat(&quot;met&quot;);&#xa;        &#xa;        insertUserStatement.setInt(1, userID);&#xa;        insertUserStatement.setString(2, ename);&#xa;        insertUserStatement.setString(3, ilvl);&#xa;        insertUserStatement.setInt(4, time); // Assuming email is not provided and setting a default value&#xa;        insertUserStatement.setFloat(5, met);&#xa;        insertUserStatement.setString(6, &quot;Morning&quot;);&#xa;         &#xa;&#xa;        int rowsAffected = insertUserStatement.executeUpdate();&#xa;        &#xa;    }&#xa;}&#xa;} catch (Exception e) {&#xa;    e.printStackTrace();&#xa;}"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Diet:"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea2">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="dietText.toString()" type="code"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="StringBuilder dietText = new StringBuilder();&#xa;int cal = 100;&#xa;try{&#xa;    Class.forName(&quot;com.mysql.jdbc.Driver&quot;);&#xa;    Connection con = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/fit&quot;,&quot;root&quot;,&quot;&quot;);&#xa;if(trgtWeight&gt;weight){&#xa;    String sql = &quot;Select * from foodinfo where calories_per_quantity &gt; ?&quot;;&#xa;    PreparedStatement pst = con.prepareStatement(sql);&#xa;    pst.setInt(1, cal);&#xa;    ResultSet rs = pst.executeQuery();&#xa;&#xa;    String insertUserQuery = &quot;INSERT INTO dietplan (user_id, food_name, quantity_grams, time_of_day, expected_target_calories, flag) VALUES (?, ?, ?, ?, ?, ?)&quot;;&#xa;    PreparedStatement insertUserStatement = con.prepareStatement(insertUserQuery);&#xa;&#xa;    while(rs.next())&#xa;    {&#xa;        dietText.append(rs.getString(&quot;food_name&quot;)).append(&quot;\n&quot;);&#xa;&#xa;        String fname = rs.getString(&quot;food_name&quot;);&#xa;        int quantity = 5*(rs.getInt(&quot;quantity&quot;));&#xa;        float exp = 5*(rs.getFloat(&quot;calories_per_quantity&quot;));&#xa;        &#xa;        insertUserStatement.setInt(1, userID);&#xa;        insertUserStatement.setString(2, fname);&#xa;        insertUserStatement.setInt(3, quantity);&#xa;        insertUserStatement.setString(4, &quot;Dinner&quot;); // Assuming email is not provided and setting a default value&#xa;        insertUserStatement.setFloat(5, exp);&#xa;        insertUserStatement.setInt(6, 0);&#xa;         &#xa;&#xa;        int rowsAffected = insertUserStatement.executeUpdate();&#xa;    }&#xa;&#xa;    &#xa;}else{&#xa;String sql = &quot;Select * from foodinfo where calories_per_quantity &lt; ?&quot;;&#xa;    PreparedStatement pst = con.prepareStatement(sql);&#xa;    pst.setInt(1, cal);&#xa;    ResultSet rs = pst.executeQuery();&#xa;&#xa;    String insertUserQuery = &quot;INSERT INTO dietplan (user_id, food_name, quantity_grams, time_of_day, expected_target_calories, flag) VALUES (?, ?, ?, ?, ?, ?)&quot;;&#xa;    PreparedStatement insertUserStatement = con.prepareStatement(insertUserQuery);&#xa;&#xa;    while(rs.next())&#xa;    {&#xa;        dietText.append(rs.getString(&quot;food_name&quot;)).append(&quot;\n&quot;);&#xa;&#xa;        String fname = rs.getString(&quot;food_name&quot;);&#xa;        int quantity = 5*(rs.getInt(&quot;quantity&quot;));&#xa;        float exp = 5*(rs.getFloat(&quot;calories_per_quantity&quot;));&#xa;        &#xa;        insertUserStatement.setInt(1, userID);&#xa;        insertUserStatement.setString(2, fname);&#xa;        insertUserStatement.setInt(3, quantity);&#xa;        insertUserStatement.setString(4, &quot;Lunch&quot;); // Assuming email is not provided and setting a default value&#xa;        insertUserStatement.setFloat(5, exp);&#xa;        insertUserStatement.setInt(6, 0);&#xa;         &#xa;&#xa;        int rowsAffected = insertUserStatement.executeUpdate();&#xa;    }&#xa;&#xa;    &#xa;}&#xa;} catch (Exception e) {&#xa;    e.printStackTrace();&#xa;}"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="24" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Custom Diet &amp; Workout Plan"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="follow">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="33" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Done"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="followActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="ff" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="jToggleButton1" min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" pref="109" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jToggleButton3" pref="116" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="jToggleButton5" pref="84" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jToggleButton6" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jToggleButton4" min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jToggleButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jToggleButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jToggleButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jToggleButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Home"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton3">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Recommendations"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton3ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Goals"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton5ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Log out"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;Calorie intake&quot;, &quot;Calorie expenditure&quot;})" type="code"/>
+                </Property>
+                <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="0" type="code"/>
+                </Property>
+                <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="0" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton6">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Account"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton6ActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
